@@ -235,7 +235,7 @@ fix_all() {
     fix_missing   $force
     apt_autoremove && apt_autoremove_complete 
     apt_fixbroken && apt_fixbroken_complete 
-    make_rootgreatagain $force
+    #make_rootgreatagain $force
     seclists
     fix_flameshot $force
     fix_grub
@@ -1034,25 +1034,25 @@ run_update() {
     eval apt -y install dkms build-essential linux-headers-amd64 $silent
     }
 
-make_rootgreatagain() {
-    echo -e "\n\n KALI-ROOT-LOGIN INSTALLATION: - PAGE 1   "$red"*** READ CAREFULLY! ***"$white" \n"
-    echo -e "   On Kali 2019.x and prior the default user was root"
-    echo -e "   On Kali 2020.1 and newer this was changed, the default user was changed to be "
-    echo -e "   an" $yellow$bold"actual user"$norm$white" on the system and not "$red$bold"root"$norm$white", this user is : kali (by default) "
-    echo -e "\n   Press Y - If you wish to re-enable the ability to login as root and be root all the time"
-    echo -e "     If you choose Yes - a second screen will prompt you to copy all of /home/$finduser to /root"
-    echo -e "     as there is nothing in the /root directory by default"
-    echo -e "\n   Press N - The script will skip this section, and not re-enable the login as root function"
-    echo -e "\n   "$bold$red"If you are confused or dont understand what"$norm$white
-    echo -e "   "$bold$red"this part of the script is doing, press N"$norm$white
-    echo -e "\n   Do you want to re-enable the ability to login as root in kali?"
-    read -n1 -p "   Please type Y or N : " userinput
-    case $userinput in
-        y|Y) enable_rootlogin $force;;
-        n|N) echo -e "\n\n $redexclaim skipping root login setup" ;;
-        *) echo -e "\n invalid key try again Y or N"; make_rootgreatagain;;
-    esac
-    }
+# make_rootgreatagain() {
+#     echo -e "\n\n KALI-ROOT-LOGIN INSTALLATION: - PAGE 1   "$red"*** READ CAREFULLY! ***"$white" \n"
+#     echo -e "   On Kali 2019.x and prior the default user was root"
+#     echo -e "   On Kali 2020.1 and newer this was changed, the default user was changed to be "
+#     echo -e "   an" $yellow$bold"actual user"$norm$white" on the system and not "$red$bold"root"$norm$white", this user is : kali (by default) "
+#     echo -e "\n   Press Y - If you wish to re-enable the ability to login as root and be root all the time"
+#     echo -e "     If you choose Yes - a second screen will prompt you to copy all of /home/$finduser to /root"
+#     echo -e "     as there is nothing in the /root directory by default"
+#     echo -e "\n   Press N - The script will skip this section, and not re-enable the login as root function"
+#     echo -e "\n   "$bold$red"If you are confused or dont understand what"$norm$white
+#     echo -e "   "$bold$red"this part of the script is doing, press N"$norm$white
+#     echo -e "\n   Do you want to re-enable the ability to login as root in kali?"
+#     read -n1 -p "   Please type Y or N : " userinput
+#     case $userinput in
+#         y|Y) enable_rootlogin $force;;
+#         n|N) echo -e "\n\n $redexclaim skipping root login setup" ;;
+#         *) echo -e "\n invalid key try again Y or N"; make_rootgreatagain;;
+#     esac
+#     }
 
 enable_rootlogin() {
     section="kali-root-login"
@@ -2036,7 +2036,7 @@ pimpmykali_menu() {
     echo -e "  3 - Fix Golang               (installs golang, adds GOPATH= to .zshrc and .bashrc)"  # fix_golang
     echo -e "  4 - Fix Grub                 (adds mitigations=off)"                                 # fix_grub
     echo -e "  5 - Fix Impacket             (installs impacket 0.9.19)"                             # fix_impacket
-    echo -e "  6 - Enable Root Login        (installs kali-root-login)"                             # make_rootgreatagain
+    #echo -e "  6 - Enable Root Login        (installs kali-root-login)"                             # make_rootgreatagain
     #echo -e "  7 - Install Waybackrust      (waybackrust installed, symlinked to waybackurls)"      # fix_waybackurls
     echo -e "  8 - Fix nmap scripts         (clamav-exec.nse and http-shellshock.nse)"              # fix_nmap
     echo -e "  9 - Pimpmyupgrade            (apt upgrade with vbox/vmware detection)"               # only_upgrade
@@ -2075,7 +2075,7 @@ pimpmykali_menu() {
         3) fix_golang;;
         4) fix_grub;;
         5) fix_impacket;;
-        6) make_rootgreatagain;;
+       # 6) make_rootgreatagain;;
        # 7) fix_waybackurls;;
         8) fix_nmap ;;
         9) apt_update; fix_libwacom; only_upgrade;;
@@ -2132,7 +2132,7 @@ check_arg() {
         --go) fix_golang                       ;;
   #--impacket) fix_impacket                     ;;
       --grub) fix_grub                         ;;
-      --root) make_rootgreatagain              ;;
+  #    --root) make_rootgreatagain              ;;
    --missing) fix_missing                      ;;
       --help) pimpmykali_help                  ;;
  --flameshot) fix_flameshot                    ;;

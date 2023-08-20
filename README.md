@@ -2,6 +2,11 @@
 
 ![pimpmykali](https://github.com/Dewalt-arch/pimpmykali/assets/81341961/dd4ec6b0-dd27-4ff7-a60b-e9822255ff5f)
 
+> [!note] This repository was created for my own personal use because there are things that I like that shouldn't go in the main repo. I'll keep track of things I change to the best of my ability.
+
+## Fork Changelog
+- [8/20/23] - Removed anything to "Make Root Great Again"
+
 # Fixes for new imported Kali Linux virtual machines
   - Author assumes zero liability for any data loss or misuse of pimpmykali
   - Can be used on a bare metal machines, but thats on you
